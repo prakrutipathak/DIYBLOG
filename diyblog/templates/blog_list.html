@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog List</title>
+    <style>
+        h1{
+            margin-left:45%;
+        }
+        .card-container {
+            display: flex;
+            justify-content: space-between; /* Adjust as needed */
+        }
+
+        .square-card {
+            width: 30%; /* Adjust the width as needed */
+            margin: 0% 5% 0%; /* Adjust the margin as needed */
+            padding: 10px;
+            background-color: black;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center; /* Center the content */
+        }
+        /* CSS for the black button with white text */
+.button-style {
+    background-color: white;
+    color: black;
+    padding: 7px 10px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 5px; /* Adjust border-radius as needed */
+    text-decoration: none; /* Remove underline from the link text */
+    display: inline-block;
+    font-size: 16px; /* Adjust font-size as needed */
+    cursor: pointer;
+}
+
+
+a{
+    color:black;
+    text-decoration:none;
+}
+p{
+    color:white;
+}
+
+    </style>
+</head>
+<body>
+    <!-- HTML structure for three square cards in one row -->
+    <h1>Lists of Blog</h1>
+    <div class="card-container">
+        {% for blog in blogs %}
+            <div class="square-card">
+                <p>{{ blog.title }}</p>
+
+                <p>{{ blog.author }} </p>
+                    <p> {{ blog.post_date }}</p>
+                <br>
+                <button type="submit" class="button-style"><a href="{% url 'accounts:blog_detail' blog.id %}">View More</a></button>
+
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
